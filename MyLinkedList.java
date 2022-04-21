@@ -1,7 +1,7 @@
 package com.bridgelabz.linkedlist;
 /*
  *Author: Prasad
- *Ability to insert 40 after 30 to the linked list sequence of 56->30->40->70
+ *Ability to delete 40 from the linked list of sequence 56->30->40->70
  */
 
 public class MyLinkedList<K> {
@@ -130,6 +130,23 @@ public class MyLinkedList<K> {
 			INode tempNode = nodeWithKeyValue.getNext();
 			nodeWithKeyValue.setNext(myNewNode);
 			myNewNode.setNext(tempNode);
+		}
+		else {
+			System.out.println("Key not found");
+		}
+	}
+	
+	/*
+	 * deleteWithKey method to delete specific node
+	 */
+	public void deleteWithKey(int key) {
+		INode nodeWithKeyValue = searchNode(key);
+		INode tempNode = head;
+		if(!nodeWithKeyValue.equals(null)) {
+			while(tempNode != null && tempNode.getNext() != nodeWithKeyValue) {
+				tempNode = tempNode.getNext();
+			}
+			tempNode.setNext(nodeWithKeyValue.getNext());
 		}
 		else {
 			System.out.println("Key not found");
