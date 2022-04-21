@@ -229,4 +229,37 @@ class MyLinkedListTest {
 		Assert.assertTrue(result);
 				         
 	}
+	
+	/*
+	 * Test case to check deleteWithKey method
+	 */
+	@Test
+	public void abilityToDeleteNodeWithKey() {
+		//Key assigned to each node using object
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(40);
+		MyNode<Integer> myFourthNode = new MyNode<>(70);
+		
+		//object
+		MyLinkedList myLinkedList = new MyLinkedList();
+		
+		//calling append method
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		myLinkedList.append(myFourthNode);
+		System.out.println("----------Linked List before deletion-----------");
+		myLinkedList.printMyNodes();
+		
+		System.out.println("-----------Linked List after deletion------------");
+		myLinkedList.deleteWithKey(40);
+		myLinkedList.printMyNodes();
+		
+		//Test condition
+		boolean result = myLinkedList.head.equals(myFirstNode) &&
+		                 mySecondNode.getNext().equals(myFourthNode) &&
+		                 myFourthNode.equals(myLinkedList.tail);
+        Assert.assertTrue(result);
+	}
 }
