@@ -1,7 +1,7 @@
 package com.bridgelabz.linkedlist;
 /*
  *Author: Prasad
- *Ability to search linked list to find to find node with value 30
+ *Ability to insert 40 after 30 to the linked list sequence of 56->30->40->70
  */
 
 public class MyLinkedList<K> {
@@ -118,5 +118,21 @@ public class MyLinkedList<K> {
 			System.out.println("Key not found");
 			return head;
 		}		
+	}
+
+	/*
+	 * insertWithKey method to insert node after specific node
+	 */
+	public void insertWithKey(int key, INode myNewNode) {
+		//to search key is present in linked list
+		INode nodeWithKeyValue = searchNode(key);
+		if(nodeWithKeyValue.getKey().equals(key)) {
+			INode tempNode = nodeWithKeyValue.getNext();
+			nodeWithKeyValue.setNext(myNewNode);
+			myNewNode.setNext(tempNode);
+		}
+		else {
+			System.out.println("Key not found");
+		}
 	}
 }
