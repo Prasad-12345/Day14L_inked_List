@@ -195,4 +195,38 @@ class MyLinkedListTest {
 		//Test condition
 		boolean result = tempNode.getKey().equals(30);
 	}
+	
+	/*
+	 * Test case to check insertWithKey method
+	 */
+	@Test
+	public void abilityToInsert40After30ToLinkedList() {
+		//Key assigned to each node using object
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(70);
+		MyNode<Integer> myNewNode = new MyNode<>(40);
+		
+		//object
+		MyLinkedList myLinkedList = new MyLinkedList();
+		
+		//calling append method
+		myLinkedList.append(myFirstNode);
+		myLinkedList.append(mySecondNode);
+		myLinkedList.append(myThirdNode);
+		
+		System.out.println("----------Linked List before insertion-----------");
+		myLinkedList.printMyNodes();
+		
+		System.out.println("-----------Linked List after insertion------------");
+		myLinkedList.insertWithKey(30, myNewNode);
+		myLinkedList.printMyNodes();
+		
+		//Test condition
+		boolean result = myLinkedList.head.getNext().equals(mySecondNode) &&
+				         mySecondNode.getNext().equals(myNewNode) &&
+				         myNewNode.getNext().equals(myThirdNode);
+		Assert.assertTrue(result);
+				         
+	}
 }
